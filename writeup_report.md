@@ -6,8 +6,10 @@
 [image4]: ./output_images/i3.png "i3"
 [image5]: ./output_images/o2.png "o4"
 [image6]: ./output_images/o3.png "o5"
-[image7]: ./test_images/solidWhiteRight.jpg "origin"
-[image8]: ./output_image/hough.png "Hough_I"
+[image7]: ./output_images/o4.png "o6"
+[image8]: ./output_images/o5.png "o7"
+[image9]: ./output_images/o6.png "o8"
+[image10]: ./output_images/o7.png "o9"
 
 # Self-Driving Car Engineer Nanodegree
 
@@ -92,3 +94,19 @@ Below, I have copied the result of applying each function to a sample image:
 
 ![alt text][image5]
 ![alt text][image6]
+
+- Calculate gradient magnitude
+
+![alt text][image7]
+
+- Calculate gradient direction
+
+![alt text][image8]
+
+- Calculate color threshold
+
+![alt text][image9]
+
+The output image resulting of combining each thresh can be observed below:
+
+![alt text][image10]
