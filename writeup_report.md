@@ -4,7 +4,7 @@
 [image2]: ./output_images/i2second_cell.png "2cell"
 [image3]: ./output_images/o1.png "o3"
 [image4]: ./output_images/i3.png "i3"
-[image5]: ./output_image/hough_1.png "Hough"
+[image5]: ./output_images/o2.png "o4"
 [image6]: ./output_image/final_result.png "Final"
 [image7]: ./test_images/solidWhiteRight.jpg "origin"
 [image8]: ./output_image/hough.png "Hough_I"
@@ -63,7 +63,7 @@ The picture below is complete code for this step can be found in the second code
 
 ![alt text][image2]
 
-### Step 2: Apply a distortion correction to raw images
+### Step 2: undistort image
 
 Another OpenCv funtion, [cv2.undistort](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.html), will be used to undistort images.
 
@@ -74,3 +74,20 @@ Below, it can be observed the result of undistorting one of the chessboard image
 The image below show code for this step
 
 ![alt text][image4]
+
+### Step 3: create a thresholded binary image.
+
+In this step, we will define the following funtions to calculate several gradient measurements (x, y, magnitude, direction and color).
+
+- Calculate directional gradient: `abs_sobel_thresh()`.
+- Calculate gradient magnitude: `mag_thres()`.
+- Calculate gradient direction: `dir_thresh()`.
+- Calculate color threshold: `col_thresh()`.
+
+Then, `combine_threshs()` will be used to combine these thresholds, and produce the image which will be used to identify lane lines in later steps.
+
+Below, I have copied the result of applying each function to a sample image:
+
+- Calculate directional gradient for _x_ and _y_ orients:
+
+![alt text][image5]
