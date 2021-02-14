@@ -10,6 +10,7 @@
 [image8]: ./output_images/o5.png "o7"
 [image9]: ./output_images/o6.png "o8"
 [image10]: ./output_images/o7.png "o9"
+[image11]: ./output_images/o8.png "o10"
 
 # Self-Driving Car Engineer Nanodegree
 
@@ -110,3 +111,56 @@ Below, I have copied the result of applying each function to a sample image:
 The output image resulting of combining each thresh can be observed below:
 
 ![alt text][image10]
+
+### Step 4: Use a perspective transform to wrap image.
+
+The next step in our pipeline is to transform our sample image to _birds-eye_ view.
+
+The process to do that is quite simple:
+
+- First, you need to select the coordinates corresponding to a [trapezoid](https://en.wikipedia.org/wiki/Trapezoid) in the image, but which would look like a rectangle from _birds_eye_ view.
+- Then, you have to define the destination coordinates, or how that trapezoid would look from _birds_eye_ view. 
+- Finally, Opencv function [cv2.getPerspectiveTransform](https://docs.opencv.org/2.4/modules/imgproc/doc/geometric_transformations.html#getperspectivetransform) will be used to calculate both, the perpective transform _M_ and the inverse perpective transform _Minv.
+- _M_ and _Minv_ will be used respectively to warp and unwarp the video images.
+
+Please find below the result of warping an image after transforming its perpective to birds-eye view:
+
+![alt text][image11]
+
+The code for the `warp()` function can be found below:
+
+```python
+# Define perspective transform function
+def warp(img, src_coordinates=None, dst_coordinates=None):
+    # Define calibration box in source (original) and destination (desired or warped) coordinates
+    img_size = (img.shape[1], img.shape[0])
+    
+    
+    if src_coordinates is None:
+        src_coordinates = np.float32(
+            [[280,  700],  # Bottom left
+             [595,  460],  # Top left
+             [725,  460],  # Top right
+             [1125, 700]]) # Bottom right
+        
+    if dst_coordinates is None:
+        dst_coordinates = np.float32(
+            [[250,  720],  # Bottom left
+             [250,    0],  # Top left
+             [1065,   0],  # Top right
+             [1065, 720]]) # Bottom right   
+
+    # Compute the perspective transfor, M
+    M = cv2.getPerspectiveTransform(src_coordinates, dst_coordinates)
+
+    
+    # Compute the inverse perspective transfor also by swapping the input parameters
+    Minv = cv2.getPerspectiveTransform(dst_coordinates, src_coordinates)
+    
+    # Create warped image - uses linear interpolation
+    warped = cv2.warpPerspective(img, M, img_size, flags=cv2.INTER_LINEAR)
+
+    return warped, M, Minv
+```
+
+ Please notice that the function does not return the unwarped version of the image. That would be performed in a later step.
