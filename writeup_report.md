@@ -24,6 +24,7 @@
 [image22]: ./output_images/o12.png "o14"
 [image23]: ./output_images/i10-1.png "i10-1"
 [image24]: ./output_images/i10-2.png "i10-2"
+[image25]: ./output_images/i11.png "i11"
 
 # Self-Driving Car Engineer Nanodegree
 
@@ -217,3 +218,14 @@ Please notice that this is a very basic implementation. I have not implemented s
 ![alt text][image24]
 
 This class for processing video.
+
+Finally, I have written the output video by
+
+![alt text][image25]
+
+and this is [video link](https://github.com/disorn-inc/udacity_adv_lane/blob/master/project_video_solution.mp4)
+
+## Discussion
+
+This has been a really challenging project and I am quite happy with the results.
+I think some process can improve by control algorithm or machine/deep leaning technique such as light adjust or color image adjust when I bring this lane detection to real world pratical.
