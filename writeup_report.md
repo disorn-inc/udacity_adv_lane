@@ -19,6 +19,11 @@
 [image17]: ./output_images/i6-2.png "i6-2"
 [image18]: ./output_images/i7.png "i7"
 [image19]: ./output_images/i8.png "i8"
+[image20]: ./output_images/i9.png "i9"
+[image21]: ./output_images/o11.png "o13"
+[image22]: ./output_images/o12.png "o14"
+[image23]: ./output_images/i10-1.png "i10-1"
+[image24]: ./output_images/i10-2.png "i10-2"
 
 # Self-Driving Car Engineer Nanodegree
 
@@ -38,7 +43,7 @@ My project consisted of 9 steps:
 2. undistort image,
 3. create a thresholded binary image,
 4. Use a perspective transform to wrap image,
-5. Detect lane pixels and fit to find the lane boundary.,
+5. Detect lane pixels and fit to find the lane boundary,
 6. Find the curvature of the lane and vehicle position with respect to center,
 7. Warp the detected lane boundaries back onto the original image,
 8. Display numerical estimation of lane curvature and vehicle position,
@@ -167,9 +172,48 @@ The image below show code for this step
 Once you have selected the lines, it is reasonable to assume that the lines will remain there in future video frames.
 `detect_similar_lines()` uses the previosly calculated _line_fits_ to try to identify the lane lines in a consecutive image. If it fails to calculate it, it invokes `detect_lines()` function to perform a full search.
 
-### Step 6: Determine the curvature of the lane, and vehicle position with respect to center.
+### Step 6: Find the curvature of the lane and vehicle position with respect to center
 
 At this moment, some metrics will be calculated: the radius of curvature and the car offset.
 
 ![alt text][image18]
 ![alt text][image19]
+
+### Step 7: Warp the detected lane boundaries back onto the original image.
+
+Let's recap. We have already identified the lane lines, its radius of curvature and the car offset.
+
+The next step will be to draw the lanes on the original image:
+
+- First, we will draw the lane lines onto the warped blank version of the image.
+- The lane will be drawn onto the warped blank image using the Opencv function [cv2.fillPoly](https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html#fillpoly). 
+- Finally, the blank will be warped back to original image space using inverse perspective matrix (Minv).
+
+![alt text][image20]
+
+An example of its output can be observed below:
+
+![alt text][image21]
+
+### Step 8: Display numerical estimation of lane curvature and vehicle position.
+
+The next step is to add metrics to the image. I have created a method named `add_metrics()` which receives an image and the line points and returns an image which contains the left and right lane lines radius of curvature and the car offset. 
+
+This function makes use of the previously defined `curvature_radius()` and `car_offset()` function.
+
+Please find below the output image after invoking `add_metrics`:
+
+![alt text][image22]
+
+### Step 9: Run pipeline in a video.
+
+In this step, we will use all the previous steps to create a pipeline that can be used on a video.
+
+The first thing I have done is to create the `ProcessImage` class. I have decided to use a class instead of a method because it would let me calibrate the camera when initializing the class and also keep some track of the previously detected lines.
+
+Please notice that this is a very basic implementation. I have not implemented sanity checks nor lines smoothing yet. I will implement that in the future. I think the final results are good enough and I am running out of time for this term (I have till 28th of May to complete it). 
+
+![alt text][image23]
+![alt text][image24]
+
+This class for processing video.
