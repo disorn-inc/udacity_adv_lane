@@ -5,7 +5,7 @@
 [image3]: ./output_images/o1.png "o3"
 [image4]: ./output_images/i3.png "i3"
 [image5]: ./output_images/o2.png "o4"
-[image6]: ./output_image/final_result.png "Final"
+[image6]: ./output_images/o3.png "o5"
 [image7]: ./test_images/solidWhiteRight.jpg "origin"
 [image8]: ./output_image/hough.png "Hough_I"
 
@@ -91,3 +91,4 @@ Below, I have copied the result of applying each function to a sample image:
 - Calculate directional gradient for _x_ and _y_ orients:
 
 ![alt text][image5]
+![alt text][image6]
