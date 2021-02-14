@@ -2,7 +2,7 @@
 
 ## **Advanced Lane Finding on the Road** 
 
-![Cover](./writeup_imgs/cover.jpg)
+![Cover](./output_images/cover.jpg)
 
 ## Overview
 
