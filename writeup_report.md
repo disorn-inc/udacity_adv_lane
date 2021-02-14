@@ -12,6 +12,11 @@
 [image10]: ./output_images/o7.png "o9"
 [image11]: ./output_images/o8.png "o10"
 [image12]: ./output_images/i4.png "i4"
+[image13]: ./output_images/o9.png "o11"
+[image14]: ./output_images/i5.png "i5"
+[image15]: ./output_images/o10.png "o12"
+[image16]: ./output_images/i6-1.png "i6-1"
+[image17]: ./output_images/i6-2.png "i6-2"
 
 # Self-Driving Car Engineer Nanodegree
 
@@ -133,3 +138,29 @@ The code for the `warp()` function can be found below:
 ![alt text][image12]
 
  Please notice that the function does not return the unwarped version of the image. That would be performed in a later step.
+
+ ### Step 5: Detect lane pixels and fit to find the lane boundary.
+
+ In order to detect the lane pixels from the warped image, the following steps are performed.
+ 
+ - First, a histogram of the lower half of the warped image is created. Below it can be seen the histogram and the code used to produce it.
+
+![alt text][image13]
+
+![alt text][image14]
+
+- Then, the starting left and right lanes positions are selected by looking to the max value of the histogram to the left and the right of the histogram's mid position.
+- A technique known as _Sliding Window_ is used to identify the most likely coordinates of the lane lines in a window, which slides vertically through the image for both the left and right line.
+- Finally, usign the coordinates previously calculated, a second order polynomial is calculated for both the left and right lane line. Numpy's function [np.polyfit](https://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html) will be used to calculate the polynomials.
+
+Please find below the result of applying the `detect_lines()` function to the warped image:
+
+![alt text][image15]
+
+The image below show code for this step
+
+![alt text][image16]
+![alt text][image17]
+
+Once you have selected the lines, it is reasonable to assume that the lines will remain there in future video frames.
+`detect_similar_lines()` uses the previosly calculated _line_fits_ to try to identify the lane lines in a consecutive image. If it fails to calculate it, it invokes `detect_lines()` function to perform a full search.
