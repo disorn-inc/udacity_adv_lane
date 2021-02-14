@@ -1,7 +1,7 @@
 [//]: # (Image References)
 
-[image1]: ./output_images/1first_cell.png "1cell"
-[image2]: ./output_image/blur.png "Blur"
+[image1]: ./output_images/i1first_cell.png "1cell"
+[image2]: ./output_images/i2second_cell.png "2cell"
 [image3]: ./output_image/canny.png "Canny"
 [image4]: ./output_image/roi.png "Roi"
 [image5]: ./output_image/hough_1.png "Hough"
@@ -33,7 +33,7 @@ My project consisted of 9 steps:
 8. Display numerical estimation of lane curvature and vehicle position,
 9. Run pipeline in a video.
 
-## import all package that needed in the project
+### import all package that needed in the project
 
 - [OpenCV](https://opencv.org/) - an open source computer vision library,
 - [Matplotbib](https://matplotlib.org/) - a python 2D plotting libray,
@@ -58,3 +58,7 @@ For each image path, `calibrate_camera`:
 Finally, the function uses all the chessboard corners to calibrate the camera by invoking [cv2.calibrateCamera](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.html).
 
 The values returned by `cv2.calibrateCamera` will be used later to undistort our video images.
+
+The picture below is complete code for this step can be found in the second code cell 
+
+![alt text][image2]
