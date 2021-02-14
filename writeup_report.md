@@ -17,6 +17,8 @@
 [image15]: ./output_images/o10.png "o12"
 [image16]: ./output_images/i6-1.png "i6-1"
 [image17]: ./output_images/i6-2.png "i6-2"
+[image18]: ./output_images/i7.png "i7"
+[image19]: ./output_images/i8.png "i8"
 
 # Self-Driving Car Engineer Nanodegree
 
@@ -164,3 +166,10 @@ The image below show code for this step
 
 Once you have selected the lines, it is reasonable to assume that the lines will remain there in future video frames.
 `detect_similar_lines()` uses the previosly calculated _line_fits_ to try to identify the lane lines in a consecutive image. If it fails to calculate it, it invokes `detect_lines()` function to perform a full search.
+
+### Step 6: Determine the curvature of the lane, and vehicle position with respect to center.
+
+At this moment, some metrics will be calculated: the radius of curvature and the car offset.
+
+![alt text][image18]
+![alt text][image19]
